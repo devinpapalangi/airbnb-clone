@@ -7,13 +7,13 @@ import { FcGoogle } from 'react-icons/fc'
 import { useCallback, useState } from 'react'
 import { FieldValues, Message, SubmitHandler, useForm } from 'react-hook-form'
 
-import useRegisterModal from '@/app/hooks/useRegisterModal'
 import Modal from './Modal'
 import Heading from '../Heading'
 import Input from '../Inputs/Input'
 import toast from 'react-hot-toast'
 import Button from '../Button'
 import { useRouter } from 'next/navigation'
+import useRegisterModal from '../../hooks/useRegisterModal'
 
 interface RegisterFormFields{
     name: string

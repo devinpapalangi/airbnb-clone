@@ -12,9 +12,9 @@ import Heading from '../Heading'
 import Input from '../Inputs/Input'
 import toast from 'react-hot-toast'
 import Button from '../Button'
-import useLoginModal from '@/app/hooks/useLoginmModal'
 import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
+import useLoginModal from '../../hooks/useLoginmModal'
 
 interface LoginFormFields{
     email: string
