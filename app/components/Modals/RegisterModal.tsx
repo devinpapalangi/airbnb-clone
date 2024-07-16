@@ -15,6 +15,8 @@ import Button from "../Button";
 import { useRouter } from "next/navigation";
 import useRegisterModal from "../../hooks/useRegisterModal";
 import { signIn } from "next-auth/react";
+import LoginModal from "./LoginModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 interface RegisterFormFields {
   name: string;
@@ -24,6 +26,7 @@ interface RegisterFormFields {
 
 const RegisterModal = () => {
   const router = useRouter();
+  const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const defaultValues: RegisterFormFields = {
@@ -97,6 +100,11 @@ const RegisterModal = () => {
     </div>
   );
 
+  const handleModalSwitch = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
+
   const footerContent = (
     <div
       className="
@@ -135,7 +143,7 @@ const RegisterModal = () => {
         >
           <div>Already have an account?</div>
           <div
-            onClick={registerModal.onClose}
+            onClick={handleModalSwitch}
             className="
                     text-neutral-800
                     cursor-pointer
@@ -148,6 +156,7 @@ const RegisterModal = () => {
       </div>
     </div>
   );
+
   return (
     <Modal
       disabled={isLoading}

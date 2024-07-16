@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
@@ -14,6 +14,7 @@ import Button from "../Button";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import useLoginModal from "../../hooks/useLoginModal";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 interface LoginFormFields {
   email: string;
@@ -23,6 +24,7 @@ interface LoginFormFields {
 const LoginModal = () => {
   const router = useRouter();
   const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const defaultValues: LoginFormFields = {
     email: "",
@@ -63,6 +65,11 @@ const LoginModal = () => {
       setIsLoading(false);
     }
   };
+
+  const handleModalSwitch = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div
@@ -131,16 +138,16 @@ const LoginModal = () => {
                 justify-center
                 gap-2"
         >
-          <div>Don&apos;t have an account?</div>
+          <div>First time using Airbnb?</div>
           <div
-            onClick={loginModal.onClose}
+            onClick={handleModalSwitch}
             className="
                     text-neutral-800
                     cursor-pointer
                     hover:underline
                     "
           >
-            Login
+            Create an account
           </div>
         </div>
       </div>
