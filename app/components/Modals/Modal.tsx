@@ -61,13 +61,14 @@ const Modal: React.FC<Props> = ({
     secondaryAction();
   }, [disabled, secondaryAction]);
 
-  if (!isOpen) {  
+  if (!isOpen) {
     return null;
   }
 
   return (
     <>
       <div
+        onClick={handleClose}
         className="
       flex
       justify-center
