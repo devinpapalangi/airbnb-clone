@@ -6,7 +6,13 @@ import useRentModal from "@/app/hooks/useRentModal";
 import Heading from "../Heading";
 import { categories } from "@/app/utils/constants";
 import CategoryInput from "../Inputs/CategoryInput";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import CountrySelect, { CountrySelectValue } from "../Inputs/CountrySelect";
+import dynamic from "next/dynamic";
+import Counter from "../Inputs/Counter";
+import CategoryStep from "./Body/RentModal/CategoryStep";
+import LocationStep from "./Body/RentModal/LocationStep";
+import InfoStep from "./Body/RentModal/InfoStep";
 
 enum Steps {
   CATEGORY = 0,
@@ -20,7 +26,7 @@ enum Steps {
 interface RentFieldValues {
   id: string;
   category: string;
-  location: string | null;
+  location: CountrySelectValue | null;
   guestCount: number;
   roomCount: number;
   bathroomCount: number;
@@ -60,6 +66,10 @@ const RentModal = () => {
   });
 
   const category = watch("category");
+  const location = watch("location");
+  const guestCount = watch("guestCount");
+  const roomCount = watch("roomCount");
+  const bathroomCount = watch("bathroomCount");
 
   //type is handled in params
   const setCustomValue = <K extends keyof RentFieldValues>(
@@ -102,36 +112,51 @@ const RentModal = () => {
   }, [step]);
 
   let bodyContent = (
-    <div className="flex flex-col gap-8">
-      <Heading
-        title="Which one of this best describes your place?"
-        subtitle="Pick a category"
-      />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h=[50vh] overflow-y-auto">
-        {categories.map((item) => {
-          const selected = category === item.label;
-          return (
-            <div key={item.id} className="col-span-1">
-              <CategoryInput
-                onClick={(category) => setCustomValue("category", category)}
-                selected={selected}
-                label={item.label}
-                icon={item.icon}
-              />
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <CategoryStep
+      onClick={(category) => setCustomValue("category", category)}
+      category={category}
+      categories={categories}
+    />
   );
+
+  switch (step) {
+    case Steps.LOCATION:
+      bodyContent = (
+        <LocationStep
+          location={location}
+          onChange={(value) => setCustomValue("location", value)}
+        />
+      );
+      break;
+    case Steps.INFO:
+      bodyContent = (
+        <InfoStep
+          guestCount={guestCount}
+          roomCount={roomCount}
+          bathroomCount={bathroomCount}
+          onChangeGuestCount={(value) => setCustomValue("guestCount", value)}
+          onChangeRoomCount={(value) => setCustomValue("roomCount", value)}
+          onChangeBathroomCount={(value) =>
+            setCustomValue("bathroomCount", value)
+          }
+        />
+      );
+      break;
+    case Steps.IMAGES:
+      break;
+    case Steps.DESCRIPTION:
+      break;
+    case Steps.PRICE:
+      break;
+  }
 
   return (
     <>
       <Modal
-        title="Airbnb your home"
+        title="Airbnb  your home"
         isOpen={rentModal.isOpen}
         onClose={rentModal.onClose}
-        onSubmit={rentModal.onClose}
+        onSubmit={onNext}
         actionLabel={actionLabel}
         secondaryActionLabel={secondaryActionLabel}
         secondaryAction={secondaryAction}
