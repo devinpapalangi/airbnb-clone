@@ -1,3 +1,5 @@
+import { Icon } from "leaflet";
+import { IconType } from "react-icons";
 import { BsSnow } from "react-icons/bs";
 import { FaSkiing } from "react-icons/fa";
 import {
@@ -13,8 +15,9 @@ import {
 import { IoDiamond } from "react-icons/io5";
 import { MdOutlineVilla } from "react-icons/md";
 import { TbBeach, TbMountain, TbPoo, TbPool } from "react-icons/tb";
+import { Category } from "./types";
 
-export const categories = [
+export const categories: Category[] = [
   {
     id: 1,
     label: "Beach",
