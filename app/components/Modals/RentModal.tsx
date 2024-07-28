@@ -13,6 +13,7 @@ import Counter from "../Inputs/Counter";
 import CategoryStep from "./Body/RentModal/CategoryStep";
 import LocationStep from "./Body/RentModal/LocationStep";
 import InfoStep from "./Body/RentModal/InfoStep";
+import ImagesStep from "./Body/RentModal/ImagesStep";
 
 enum Steps {
   CATEGORY = 0,
@@ -70,6 +71,7 @@ const RentModal = () => {
   const guestCount = watch("guestCount");
   const roomCount = watch("roomCount");
   const bathroomCount = watch("bathroomCount");
+  const imageSrc = watch("imageSrc");
 
   //type is handled in params
   const setCustomValue = <K extends keyof RentFieldValues>(
@@ -143,6 +145,12 @@ const RentModal = () => {
       );
       break;
     case Steps.IMAGES:
+      bodyContent = (
+        <ImagesStep
+          value={imageSrc}
+          onChange={(value) => setCustomValue("imageSrc", value)}
+        />
+      );
       break;
     case Steps.DESCRIPTION:
       break;
