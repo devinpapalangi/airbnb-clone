@@ -1,9 +1,11 @@
 "use client";
 
-import { CldUploadWidget } from "next-cloudinary";
+import { CldImage, CldUploadWidget } from "next-cloudinary";
 import React, { useCallback } from "react";
 import { TbPhotoPlus } from "react-icons/tb";
 import Image from "next/image";
+import { shimmer } from "../Shimmer";
+import { PlaceholderValue } from "next/dist/shared/lib/get-img-props";
 
 declare global {
   var cloudinary: any;
@@ -30,6 +32,14 @@ const ImageUpload: React.FC<Props> = ({ onChange, value }) => {
       }}
     >
       {({ open }) => {
+        const toBase64 = (str: string) =>
+          typeof window === "undefined"
+            ? Buffer.from(str).toString("base64")
+            : window.btoa(str);
+        const dataUrl = `data:image/svg+xml;base64,${toBase64(
+          shimmer(600, 400)
+        )}`;
+
         return (
           <div
             onClick={() => open?.()}
@@ -39,7 +49,8 @@ const ImageUpload: React.FC<Props> = ({ onChange, value }) => {
             <div className="font-semibold text-lg">Click to upload</div>
             {value && (
               <div className="absolute inset-0 w-full h-full">
-                <Image
+                <CldImage
+                  placeholder={dataUrl as PlaceholderValue}
                   fill
                   src={value}
                   alt={"Upload"}
