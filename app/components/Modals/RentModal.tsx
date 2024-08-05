@@ -86,7 +86,6 @@ const RentModal = () => {
   const bathroomCount = watch("bathroomCount");
   const imageSrc = watch("imageSrc");
 
-  //type is handled in params
   const setCustomValue = <K extends keyof RentFieldValues>(
     id: K,
     value: RentFieldValues[K]
@@ -101,7 +100,38 @@ const RentModal = () => {
   const onBack = () => {
     setStep((value) => value - 1);
   };
+
+  const validateStep = () => {
+    switch (step) {
+      case Steps.CATEGORY:
+        if (!category) {
+          toast.error("Please select a category");
+          return false;
+        }
+        break;
+      case Steps.LOCATION:
+        if (!location) {
+          toast.error("Please select a location");
+          return false;
+        }
+        break;
+      case Steps.IMAGES:
+        if (!imageSrc) {
+          toast.error("Please enter images");
+          return false;
+        }
+        break;
+      default:
+        return true;
+    }
+
+    return true;
+  };
+
   const onNext = () => {
+    if (!validateStep()) {
+      return;
+    }
     setStep((value) => value + 1);
   };
 
