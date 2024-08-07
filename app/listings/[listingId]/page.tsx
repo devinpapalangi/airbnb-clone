@@ -3,7 +3,8 @@ import getListingById from "@/app/actions/getListingById";
 import ClientOnly from "@/app/components/ClientOnly";
 import EmptyState from "@/app/components/EmptyState";
 import React from "react";
-import ListingClient from "./ListingDetail";
+import getReservations from "@/app/actions/getReservations";
+import ListingDetail from "./ListingDetail";
 
 interface Props {
   params: {
@@ -12,6 +13,7 @@ interface Props {
 }
 const ListingPage: React.FC<Props> = async ({ params }) => {
   const listing = await getListingById(params);
+  const reservations = await getReservations(params);
   const currentUser = await getCurrentUser();
 
   if (!listing) {
@@ -24,7 +26,11 @@ const ListingPage: React.FC<Props> = async ({ params }) => {
 
   return (
     <ClientOnly>
-      <ListingClient listing={listing} currentUser={currentUser} />
+      <ListingDetail
+        listing={listing}
+        reservations={reservations}
+        currentUser={currentUser}
+      />
     </ClientOnly>
   );
 };

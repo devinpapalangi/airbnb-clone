@@ -22,7 +22,7 @@ interface Props {
   currentUser?: SafeUser | null;
 }
 
-const ListingClient: React.FC<Props> = ({
+const ListingDetail: React.FC<Props> = ({
   listing,
   currentUser,
   reservations,
@@ -49,9 +49,9 @@ const ListingClient: React.FC<Props> = ({
         listingId: listing.id,
       });
 
-      toast.success("Listing reserved!");
-
       setDateRange(INITIAL_DATE_RANGE);
+
+      toast.success("Listing reserved!");
       router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
@@ -141,4 +141,4 @@ const ListingClient: React.FC<Props> = ({
   );
 };
 
-export default ListingClient;
+export default ListingDetail;
