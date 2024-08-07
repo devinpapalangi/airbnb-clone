@@ -52,7 +52,7 @@ const ListingDetail: React.FC<Props> = ({
       setDateRange(INITIAL_DATE_RANGE);
 
       toast.success("Listing reserved!");
-      router.refresh();
+      router.push("/trips");
     } catch (error) {
       toast.error("Something went wrong");
     } finally {
