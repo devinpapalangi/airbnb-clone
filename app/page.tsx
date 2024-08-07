@@ -2,10 +2,11 @@ import Image from "next/image";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import getListings from "./actions/getListings";
-import ListingCard from "./components/Card/ListingCard";
 import { getCurrentUser } from "./actions/getCurrentUser";
 import { Suspense } from "react";
 import ClientOnly from "./components/ClientOnly";
+import { SafeListing } from "./types";
+import ListingCard from "./components/Listing/ListingCard";
 
 export default async function Home() {
   const listings = await getListings();

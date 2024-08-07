@@ -109,3 +109,9 @@ export const categories: Category[] = [
     description: "This property is in the luxury!",
   },
 ];
+
+export const INITIAL_DATE_RANGE = {
+  startDate: new Date(),
+  endDate: new Date(),
+  key: "selection",
+};

@@ -20,3 +20,12 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.rdrMonthP {
+  width: 100% !important;
+}
+
+.rdrCalendarWrapper {
+  width: 100% !important;
+  font-size: 16px !important;
+}
