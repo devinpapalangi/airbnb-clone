@@ -9,6 +9,7 @@ import React, { useCallback, useMemo } from "react";
 import Image from "next/image";
 import Button from "../Button";
 import HeartButton from "./HeartButton";
+import { NumericFormat } from "react-number-format";
 
 interface Props {
   currentUser: SafeUser | null;
@@ -89,7 +90,14 @@ const ListingCard: React.FC<Props> = ({
           {reservationDate || data.category}
         </div>
         <div className="flex flex-row items-center gap-1">
-          <div className="font-semibold">$ {price}</div>
+          <div className="font-semibold">
+            <NumericFormat
+              value={price}
+              displayType={"text"}
+              thousandSeparator
+              prefix="$"
+            />
+          </div>
           {!reservation && <div className="font-light">night</div>}
         </div>
         {onAction && actionLabel && (
