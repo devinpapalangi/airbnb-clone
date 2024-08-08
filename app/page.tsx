@@ -9,11 +9,11 @@ import { SafeListing } from "./types";
 import ListingCard from "./components/Listing/ListingCard";
 
 interface Props {
-  search: ListingQueryParams;
+  searchParams: ListingQueryParams;
 }
-export default async function Home({ search }: Props) {
+export default async function Home({ searchParams }: Props) {
   const [listings, currentUser] = await Promise.all([
-    getListings(search),
+    getListings(searchParams),
     getCurrentUser(),
   ]);
 
