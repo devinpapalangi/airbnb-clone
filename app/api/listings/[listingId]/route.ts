@@ -6,10 +6,7 @@ interface Params {
   listingId: string;
 }
 
-export default async function DELETE(
-  request: Request,
-  { params }: { params: Params }
-) {
+export async function DELETE(request: Request, { params }: { params: Params }) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {

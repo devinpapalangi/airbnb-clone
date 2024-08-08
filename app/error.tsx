@@ -10,7 +10,7 @@ interface Props {
 const ErrorState: React.FC<Props> = ({ error }) => {
   useEffect(() => {
     console.error(error);
-  }, []);
+  }, [error]);
 
   return <EmptyState title="Uh Oh" subtitle="Something went wrong" />;
 };
