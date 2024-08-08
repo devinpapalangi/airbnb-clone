@@ -52,7 +52,17 @@ export const authOptions: AuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/",
+    signIn: "/auth/signin", // Custom sign-in page
+    error: "/auth/error", // Custom error page
+  },
+  callbacks: {
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith(baseUrl)) {
+        return url;
+      }
+      // Ensure external URLs are handled correctly
+      return baseUrl;
+    },
   },
   debug: process.env.NODE_ENV === "development",
   session: {

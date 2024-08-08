@@ -85,7 +85,6 @@ const SearchModal = () => {
 
     setStep(Steps.LOCATION);
     searchModal.onClose();
-    console.log("URL before navigation:", url);
     router.push(url);
   }, [
     bathroomCount,
