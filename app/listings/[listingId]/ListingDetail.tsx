@@ -33,7 +33,7 @@ const ListingDetail: React.FC<Props> = ({
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [dateRange, setDateRange] = useState<Range>(INITIAL_DATE_RANGE);
 
-  const onCreateReservation = useCallback(() => {
+  const onCreateReservation = useCallback(async () => {
     if (!currentUser) {
       loginModal.onOpen();
       return;
@@ -42,7 +42,7 @@ const ListingDetail: React.FC<Props> = ({
     setIsLoading(true);
 
     try {
-      axios.post("/api/reservations", {
+      await axios.post("/api/reservations", {
         totalPrice,
         startDate: dateRange.startDate,
         endDate: dateRange.endDate,

@@ -40,3 +40,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - Improved maintanability by extending components to a more detailed sub-component
 - Improved User Experience such as adding a loading state to an asynchronus process or a dynamic import
 - Improved form validation
+- Improved author mistake to diferentiate async and synchronus code
