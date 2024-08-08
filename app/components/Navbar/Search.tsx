@@ -1,12 +1,15 @@
-"use client"
+"use client";
 
-import React from 'react'
-import { BiSearch } from 'react-icons/bi'
+import useSearchModal from "@/app/hooks/useSearchModal";
+import React from "react";
+import { BiSearch } from "react-icons/bi";
 
 const Search = () => {
+  const searchModal = useSearchModal();
   return (
     <div
-    className='
+      onClick={searchModal.onOpen}
+      className="
     border-[1px]
     w-full
     md:w-auto
@@ -15,22 +18,25 @@ const Search = () => {
     shadow-sm
     hover:shadow-md
     transition
-    cursor-pointer'>
-        <div
-        className='
+    cursor-pointer"
+    >
+      <div
+        className="
         flex
         flex-row
         items-center
-        justify-between'>
-            <div
-            className='
+        justify-between"
+      >
+        <div
+          className="
             text-sm
             font-semibold
-            px-6'>
-                Anywhere
-            </div>
-            <div
-            className='
+            px-6"
+        >
+          Anywhere
+        </div>
+        <div
+          className="
             hidden
             sm:block
             text-sm
@@ -38,11 +44,12 @@ const Search = () => {
             px-6
             border-x-[1px]
             felx-1
-            text-center'>
-                Any Week
-            </div>
-            <div
-            className='
+            text-center"
+        >
+          Any Week
+        </div>
+        <div
+          className="
             text-sm
             pl-6
             pr-2
@@ -50,25 +57,27 @@ const Search = () => {
             flex
             flex-row
             items-center
-            gap-3'>
-                <div
-                className='
-                hidden sm:block'>
-                    Add Guests
-                </div>
-                <div
-                className='
+            gap-3"
+        >
+          <div
+            className="
+                hidden sm:block"
+          >
+            Add Guests
+          </div>
+          <div
+            className="
                 p-2
                 bg-rose-500
                 rounded-full
-                text-white'>
-                    <BiSearch size={18}/>
-
-                </div>
-            </div>
+                text-white"
+          >
+            <BiSearch size={18} />
+          </div>
         </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Search
+export default Search;

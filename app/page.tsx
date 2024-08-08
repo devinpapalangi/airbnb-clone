@@ -11,11 +11,12 @@ import ListingCard from "./components/Listing/ListingCard";
 interface Props {
   search: ListingQueryParams;
 }
-const Home = async ({ search }: Props) => {
+export default async function Home({ search }: Props) {
   const [listings, currentUser] = await Promise.all([
     getListings(search),
     getCurrentUser(),
   ]);
+
   const isEmpty = listings.length === 0;
 
   if (isEmpty) {
@@ -37,6 +38,4 @@ const Home = async ({ search }: Props) => {
       </Container>
     </ClientOnly>
   );
-};
-
-export default Home;
+}

@@ -6,13 +6,12 @@ import { IconType } from "react-icons";
 import queryString from "query-string";
 
 interface Props {
-  key: number;
   label: string;
   icon: IconType;
   selected?: boolean;
 }
 
-const CategoryBox: React.FC<Props> = ({ key, label, icon: Icon, selected }) => {
+const CategoryBox: React.FC<Props> = ({ label, icon: Icon, selected }) => {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -44,7 +43,6 @@ const CategoryBox: React.FC<Props> = ({ key, label, icon: Icon, selected }) => {
   }, [label, params, router]);
   return (
     <div
-      key={key}
       onClick={handleClick}
       className={`flex
     flex-col
