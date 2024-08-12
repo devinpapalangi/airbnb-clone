@@ -1,43 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Introduction
 
-First, run the development server:
+Introducing "Airbnb-clone" - a remarkable mobile application meticulously crafted by leveraging the power of Next and Prisma This project marks an important milestone in my coding journey as it represents my first comprehensive endeavor in developing a full-fledged website application from end to end. With a total duration of 8 immersive hours, I have documented the entire development process in a captivating YouTube video.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Technology Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[![My Skills](https://skillicons.dev/icons?i=next,prisma)](https://skillicons.dev)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Gained Insight
+With this project, I have learned several important information such as
+- Next new App Route
+- SSR (Server-Side Rendering)
+- Prisma Service
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Acknowledgements
 
-## Learn More
+I would like to express my sincere gratitude to the following sources that have been instrumental in the development of this project:
 
-To learn more about Next.js, take a look at the following resources:
+- **Code with Antonio** - I would like to acknowledge Code With Antonio for his contribution to my knowledge. His GitHub profile (available [here](https://github.com/AntonioErdeljac)) contains additional resources and examples that have been beneficial in building this application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Made Improvements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## MADE IMPROVEMENTS TO TUTORIALS
+In addition to the core functionality, several improvements have been made to enhance the overall user experience of the application:
 
 - Improved maintanability by extending components to a more detailed sub-component
 - Improved User Experience such as adding a loading state to an asynchronus process or a dynamic import
 - Improved form validation
 - Improved author mistake to diferentiate async and synchronus code
+
+By incorporating these improvements, I aim to create a more polished and user-friendly application that provides an enhanced shopping experience for users.
+
+Please note that this project is a personal portfolio project and will continue to evolve over time as I gain more knowledge and experience. I welcome any feedback, suggestions, or contributions from the community to make this project even better.
+
+
